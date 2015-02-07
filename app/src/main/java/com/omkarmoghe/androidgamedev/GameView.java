@@ -81,7 +81,11 @@ public class GameView extends SurfaceView {
 
         if (canAdd) {
             Random random = new Random();
-            RectFP rectFP = new RectFP(x - 20, y - 20, x + 20, y + 20);
+
+            float randomX = random.nextInt(200);
+            float randomY = random.nextInt(200);
+
+            RectFP rectFP = new RectFP(randomX, randomY + 50, randomX + 50, randomY);
             rectFP.setPaint(paints.get(random.nextInt(4)));
             circles.add(rectFP);
         }

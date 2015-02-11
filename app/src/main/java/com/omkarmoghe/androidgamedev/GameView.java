@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -18,7 +19,7 @@ import java.util.Random;
  * Class where all the drawing and game logic goes.
  */
 public class GameView extends SurfaceView {
-
+    private int count = 0;
     private SurfaceHolder  holder;
     private GameLoopThread gameLoopThread;
 
@@ -65,10 +66,15 @@ public class GameView extends SurfaceView {
 
     @Override
     public void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.BLACK); // Black background
-
+        canvas.drawColor(Color.WHITE); // Black background
+        TextView tv = new TextView(getContext());
+        tv.setText("Circles Clicked: " + Integer.toString(count));
+        tv.setVisibility(VISIBLE);
             canAdd = false;
             for (RectFP r : circles) {
+                r.set_right(r.get_right() - 1);
+                r.set_bottom(r.get_bottom() - 1);
+
                 canvas.drawOval(r, r.getPaint());
             }
             canAdd = true;
@@ -82,12 +88,14 @@ public class GameView extends SurfaceView {
         if (canAdd) {
             Random random = new Random();
 
-            float randomX = random.nextInt(200);
-            float randomY = random.nextInt(200);
+            float randomX = random.nextInt(600);
+            float randomY = random.nextInt(1000);
 
-            RectFP rectFP = new RectFP(randomX, randomY + 50, randomX + 50, randomY);
+            RectFP rectFP = new RectFP(randomX, randomY, randomX + 50, randomY + 50);
             rectFP.setPaint(paints.get(random.nextInt(4)));
+            circles.clear();
             circles.add(rectFP);
+            count++;
         }
 
         return super.onTouchEvent(event);

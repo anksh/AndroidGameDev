@@ -27,4 +27,34 @@ public class RectFP extends RectF {
     public Paint getPaint () {
         return paint;
     }
+    public float get_left () {
+        return left;
+    }
+
+    public float get_right() {
+        return right;
+    }
+
+    public float get_top() {
+        return top;
+    }
+
+    public float get_bottom() {
+        return bottom;
+    }
+    public void set_left (float l) {
+        left = l;
+    }
+
+    public void set_right (float r) {
+        right = r;
+    }
+
+    public void set_top(float t) {
+        top = t;
+    }
+
+    public void set_bottom(float b) {
+        bottom  = b;
+    }
 }

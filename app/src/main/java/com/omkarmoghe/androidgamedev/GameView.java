@@ -24,9 +24,14 @@ public class GameView extends SurfaceView {
     private GameLoopThread gameLoopThread;
 
     private ArrayList<Paint> paints; // list of paints.
-    private ArrayList<RectFP> circles = new ArrayList<RectFP>(); // list of circles.
+    private Random random = new Random();
+    private float randomX = random.nextInt(600);
+    private float randomY = random.nextInt(1000);
 
-    private boolean canAdd = true;
+    private RectFP rectFP = new RectFP(randomX, randomY, randomX + 500, randomY + 500);
+    //private ArrayList<RectFP> circles = new ArrayList<RectFP>(); // list of circles.
+
+    //private boolean canAdd = true;
 
     public GameView(Context context) {
         super(context);
@@ -62,22 +67,24 @@ public class GameView extends SurfaceView {
         });
 
         makePaints(); // Adds our paints to the arraylist.
+        rectFP.setPaint(paints.get(random.nextInt(4)));
     }
 
     @Override
     public void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.WHITE); // Black background
+        canvas.drawColor(Color.BLACK); // Black background
         TextView tv = new TextView(getContext());
         tv.setText("Circles Clicked: " + Integer.toString(count));
         tv.setVisibility(VISIBLE);
-            canAdd = false;
-            for (RectFP r : circles) {
-                r.set_right(r.get_right() - 1);
-                r.set_bottom(r.get_bottom() - 1);
-
-                canvas.drawOval(r, r.getPaint());
-            }
-            canAdd = true;
+        //canAdd = false;
+        //for (RectFP r : circles) {
+            rectFP.set_right((float) (rectFP.get_right() - .5));
+            rectFP.set_left((float) (rectFP.get_left() + .5));
+            rectFP.set_bottom((float) (rectFP.get_bottom() - .5));
+            rectFP.set_top((float) (rectFP.get_top() + .5));
+            canvas.drawOval(rectFP, rectFP.getPaint());
+            //}
+        //canAdd = true;
     }
 
     @Override
@@ -85,16 +92,17 @@ public class GameView extends SurfaceView {
         float x = event.getX();
         float y = event.getY();
 
-        if (canAdd) {
-            Random random = new Random();
+        if (x < rectFP.get_right() && x > rectFP.get_left()
+                && y > rectFP.get_top() && y < rectFP.get_bottom()/*canAdd*/) {
 
-            float randomX = random.nextInt(600);
-            float randomY = random.nextInt(1000);
+           // Random random = new Random();
+             randomX = random.nextInt(600);
+             randomY = random.nextInt(1000);
 
-            RectFP rectFP = new RectFP(randomX, randomY, randomX + 50, randomY + 50);
+            rectFP = new RectFP(randomX, randomY, randomX + 500, randomY + 500);
             rectFP.setPaint(paints.get(random.nextInt(4)));
-            circles.clear();
-            circles.add(rectFP);
+            //circles.clear();
+            //circles.add(rectFP);
             count++;
         }
 

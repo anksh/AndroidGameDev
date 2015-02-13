@@ -1,6 +1,7 @@
 package com.omkarmoghe.androidgamedev;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -9,6 +10,8 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,19 +68,20 @@ public class GameView extends SurfaceView {
 
             @Override
             public void surfaceChanged (SurfaceHolder holder, int format, int width, int height) {
-            }
+                if(rectFP.get_right()-rectFP.get_left()<10) {
+
+                    }
+                }
         });
 
         makePaints(); // Adds our paints to the arraylist.
         rectFP.setPaint(paints.get(random.nextInt(4)));
     }
 
+
     @Override
     public void onDraw(Canvas canvas) {
         canvas.drawColor(Color.BLACK); // Black background
-        TextView tv = new TextView(getContext());
-        tv.setText("Circles Clicked: " + Integer.toString(count));
-        tv.setVisibility(VISIBLE);
         //canAdd = false;
         //for (RectFP r : circles) {
             rectFP.set_right((float) (rectFP.get_right() - (count+1)));
@@ -87,10 +91,12 @@ public class GameView extends SurfaceView {
             canvas.drawOval(rectFP, rectFP.getPaint());
             //}
         if(rectFP.get_right()-rectFP.get_left()<10){
-            System.out.println("YOU LOSE");
             rectFP.set_left(0);
             rectFP.set_right(0);
             gameLoopThread.setRunning(false);
+            //setVisibility(this.INVISIBLE);
+           ((Activity)this.getContext()).finish();
+
             //Intent intent = new Intent(this, MainActivity.class);
             //rectFP.set_top(rectFP.get_bottom());
         }

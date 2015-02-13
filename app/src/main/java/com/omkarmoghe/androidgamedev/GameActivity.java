@@ -1,6 +1,5 @@
 package com.omkarmoghe.androidgamedev;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -9,28 +8,19 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class MainActivity extends ActionBarActivity {
+public class GameActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();// Hides the action bar
-        setContentView(R.layout.activity_main);
+        setContentView(new GameView(GameActivity.this));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        Button b = (Button) findViewById(R.id.button_id);
-
-        b.setOnClickListener(new View.OnClickListener() {
-            public void onClick (View v) {
-                Intent gameScreen = new Intent(getApplicationContext(), GameActivity.class);
-                startActivity(gameScreen);
-
-            }
-        });
         return true;
     }
 

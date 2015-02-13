@@ -1,5 +1,6 @@
 package com.omkarmoghe.androidgamedev;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -7,9 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
+    public static final int COUNT_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +29,19 @@ public class MainActivity extends ActionBarActivity {
         b.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
                 Intent gameScreen = new Intent(getApplicationContext(), GameActivity.class);
-                startActivity(gameScreen);
+                startActivityForResult(gameScreen, COUNT_REQUEST);
 
             }
         });
         return true;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            String countNumber = data.getStringExtra("count");
+            TextView countText = (TextView)findViewById(R.id.textView2);
+            countText.setText("Nice job! You clicked " + countNumber + " circles!");
+            countText.setVisibility(View.VISIBLE);
     }
 
     @Override

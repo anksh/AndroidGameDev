@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -68,9 +69,7 @@ public class GameView extends SurfaceView {
 
             @Override
             public void surfaceChanged (SurfaceHolder holder, int format, int width, int height) {
-                if(rectFP.get_right()-rectFP.get_left()<10) {
 
-                    }
                 }
         });
 
@@ -94,11 +93,12 @@ public class GameView extends SurfaceView {
             rectFP.set_left(0);
             rectFP.set_right(0);
             gameLoopThread.setRunning(false);
-            //setVisibility(this.INVISIBLE);
-           ((Activity)this.getContext()).finish();
-
-            //Intent intent = new Intent(this, MainActivity.class);
-            //rectFP.set_top(rectFP.get_bottom());
+            Bundle b = new Bundle();
+            b.putString("count",Integer.toString(count));
+            Intent i = new Intent();
+            i.putExtras(b);
+            ((Activity)this.getContext()).setResult(Activity.RESULT_OK, i);
+            ((Activity)this.getContext()).finish();
         }
         //canAdd = true;
     }

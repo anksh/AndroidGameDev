@@ -2,6 +2,7 @@ package com.omkarmoghe.androidgamedev;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -78,12 +80,20 @@ public class GameView extends SurfaceView {
         tv.setVisibility(VISIBLE);
         //canAdd = false;
         //for (RectFP r : circles) {
-            rectFP.set_right((float) (rectFP.get_right() - .5));
-            rectFP.set_left((float) (rectFP.get_left() + .5));
-            rectFP.set_bottom((float) (rectFP.get_bottom() - .5));
-            rectFP.set_top((float) (rectFP.get_top() + .5));
+            rectFP.set_right((float) (rectFP.get_right() - (count+1)));
+            rectFP.set_left((float) (rectFP.get_left() + (count+1)));
+            rectFP.set_bottom((float) (rectFP.get_bottom() - (count+1)));
+            rectFP.set_top((float) (rectFP.get_top() + (count+1)));
             canvas.drawOval(rectFP, rectFP.getPaint());
             //}
+        if(rectFP.get_right()-rectFP.get_left()<10){
+            System.out.println("YOU LOSE");
+            rectFP.set_left(0);
+            rectFP.set_right(0);
+            gameLoopThread.setRunning(false);
+            //Intent intent = new Intent(this, MainActivity.class);
+            //rectFP.set_top(rectFP.get_bottom());
+        }
         //canAdd = true;
     }
 
@@ -96,10 +106,12 @@ public class GameView extends SurfaceView {
                 && y > rectFP.get_top() && y < rectFP.get_bottom()/*canAdd*/) {
 
            // Random random = new Random();
-             randomX = random.nextInt(600);
-             randomY = random.nextInt(1000);
+            randomX = random.nextInt(500);
+            randomY = random.nextInt(900);
 
-            rectFP = new RectFP(randomX, randomY, randomX + 500, randomY + 500);
+            do{
+                rectFP = new RectFP(randomX, randomY, randomX + 500, randomY + 500);
+            }while(rectFP.get_left()>600 || rectFP.get_top()>900);
             rectFP.setPaint(paints.get(random.nextInt(4)));
             //circles.clear();
             //circles.add(rectFP);

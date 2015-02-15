@@ -40,7 +40,11 @@ public class MainActivity extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
             String countNumber = data.getStringExtra("count");
             TextView countText = (TextView)findViewById(R.id.textView2);
-            countText.setText("Nice job! You clicked " + countNumber + " circles!");
+            if (!countNumber.equals("1")) {
+                countText.setText("Nice job! You clicked " + countNumber + " circles!");
+            } else {
+                countText.setText("Try Again! You clicked " + countNumber + " circle!");
+            }
             countText.setVisibility(View.VISIBLE);
     }
 

@@ -7,14 +7,14 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -34,7 +34,32 @@ public class GameView extends SurfaceView {
     private float randomX = random.nextInt(600);
     private float randomY = random.nextInt(1000);
 
-    private RectFP rectFP = new RectFP(randomX, randomY, randomX + 500, randomY + 500);
+
+    private boolean firstRun = true;
+    /*
+    Display display = ((Activity)getContext()).getWindowManager().getDefaultDisplay();
+    Point size = new Point();
+    display.
+    int width = size.x;
+    int height = size.y;
+    */
+    final WindowManager w = (WindowManager)((Activity)getContext()).getSystemService(Context.WINDOW_SERVICE);
+    Display display = w.getDefaultDisplay();
+    final DisplayMetrics metrics = new DisplayMetrics();
+
+
+
+    private float height = metrics.heightPixels;
+    private float width = metrics.widthPixels;
+    private RectFP rectFP = new RectFP(500,700,200,300);
+
+    /*
+    display.getMetrics(metrics);
+    height = metrics.heightPixels;
+    width = metrics.widthPixels;
+    rectFP = new RectFP(height / 2 - 100, width / 2 - 100, height / 2 + 100, width / 2 + 100);
+    */
+
     //private ArrayList<RectFP> circles = new ArrayList<RectFP>(); // list of circles.
 
     //private boolean canAdd = true;
@@ -83,10 +108,21 @@ public class GameView extends SurfaceView {
         canvas.drawColor(Color.BLACK); // Black background
         //canAdd = false;
         //for (RectFP r : circles) {
-            rectFP.set_right((float) (rectFP.get_right() - (count+1)));
-            rectFP.set_left((float) (rectFP.get_left() + (count+1)));
-            rectFP.set_bottom((float) (rectFP.get_bottom() - (count+1)));
-            rectFP.set_top((float) (rectFP.get_top() + (count+1)));
+            if (!firstRun) {
+                rectFP.set_right((float) (rectFP.get_right() - (10 + (float)count / 100)));
+                rectFP.set_left((float) (rectFP.get_left() + (10 + (float)count / 100)));
+                rectFP.set_bottom((float) (rectFP.get_bottom() - (10 + (float)count / 100)));
+                rectFP.set_top((float) (rectFP.get_top() + (10 + (float)count / 100)));
+
+             } else {
+                display.getMetrics(metrics);
+                height = metrics.heightPixels;
+                width = metrics.widthPixels;
+                rectFP.set_right(width / 2 + 250);
+                rectFP.set_left(width / 2 - 250);
+                rectFP.set_top(height / 2 - 250);
+                rectFP.set_bottom(height / 2 + 250);
+            }
             canvas.drawOval(rectFP, rectFP.getPaint());
             //}
         if(rectFP.get_right()-rectFP.get_left()<10){
@@ -111,13 +147,15 @@ public class GameView extends SurfaceView {
         if (x < rectFP.get_right() && x > rectFP.get_left()
                 && y > rectFP.get_top() && y < rectFP.get_bottom()/*canAdd*/) {
 
-           // Random random = new Random();
-            randomX = random.nextInt(500);
-            randomY = random.nextInt(900);
+            firstRun = false;
+            randomX = random.nextInt((int)(width - 100)) + 50;
+            randomY = random.nextInt((int)(height - 100)) + 50;
+            System.out.println(randomX);
+            System.out.println(randomY);
 
             do{
-                rectFP = new RectFP(randomX, randomY, randomX + 500, randomY + 500);
-            }while(rectFP.get_left()>600 || rectFP.get_top()>900);
+                rectFP = new RectFP(randomX - 250, randomY - 250, randomX + 250, randomY + 250);
+            }while(rectFP.get_left()>width || rectFP.get_top()>height);
             rectFP.setPaint(paints.get(random.nextInt(4)));
             //circles.clear();
             //circles.add(rectFP);

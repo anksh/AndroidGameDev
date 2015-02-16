@@ -109,19 +109,19 @@ public class GameView extends SurfaceView {
         //canAdd = false;
         //for (RectFP r : circles) {
             if (!firstRun) {
-                rectFP.set_right((float) (rectFP.get_right() - (10 + (float)count / 100)));
-                rectFP.set_left((float) (rectFP.get_left() + (10 + (float)count / 100)));
-                rectFP.set_bottom((float) (rectFP.get_bottom() - (10 + (float)count / 100)));
-                rectFP.set_top((float) (rectFP.get_top() + (10 + (float)count / 100)));
+                rectFP.set_right((float) (rectFP.get_right() - (9 + (float)count / 20)));
+                rectFP.set_left((float) (rectFP.get_left() + (9 + (float)count / 20)));
+                rectFP.set_bottom((float) (rectFP.get_bottom() - (9 + (float)count / 20)));
+                rectFP.set_top((float) (rectFP.get_top() + (9 + (float)count / 20)));
 
              } else {
                 display.getMetrics(metrics);
                 height = metrics.heightPixels;
                 width = metrics.widthPixels;
-                rectFP.set_right(width / 2 + 250);
-                rectFP.set_left(width / 2 - 250);
-                rectFP.set_top(height / 2 - 250);
-                rectFP.set_bottom(height / 2 + 250);
+                rectFP.set_right(width / 2 + 275);
+                rectFP.set_left(width / 2 - 275);
+                rectFP.set_top(height / 2 - 275);
+                rectFP.set_bottom(height / 2 + 275);
             }
             canvas.drawOval(rectFP, rectFP.getPaint());
             //}
@@ -154,7 +154,7 @@ public class GameView extends SurfaceView {
             System.out.println(randomY);
 
             do{
-                rectFP = new RectFP(randomX - 250, randomY - 250, randomX + 250, randomY + 250);
+                rectFP = new RectFP(randomX - 275, randomY - 275, randomX + 275, randomY + 275);
             }while(rectFP.get_left()>width || rectFP.get_top()>height);
             rectFP.setPaint(paints.get(random.nextInt(4)));
             //circles.clear();

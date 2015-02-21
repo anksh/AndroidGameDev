@@ -105,7 +105,17 @@ public class GameView extends SurfaceView {
 
     @Override
     public void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.BLACK); // Black background
+        //canvas.drawColor(Color.BLACK); // Black background
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawPaint(paint);
+
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(20);
+        height = metrics.heightPixels;
+        width = metrics.widthPixels;
+        canvas.drawText("Circles clicked: " + Integer.toString(count), width / (float)2.5, height / 10, paint);
         //canAdd = false;
         //for (RectFP r : circles) {
             if (!firstRun) {
@@ -143,7 +153,6 @@ public class GameView extends SurfaceView {
     public boolean onTouchEvent (MotionEvent event) {
         float x = event.getX();
         float y = event.getY();
-
         if (x < rectFP.get_right() && x > rectFP.get_left()
                 && y > rectFP.get_top() && y < rectFP.get_bottom()/*canAdd*/) {
 

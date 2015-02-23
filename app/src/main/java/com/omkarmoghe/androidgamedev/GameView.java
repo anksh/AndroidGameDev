@@ -112,10 +112,10 @@ public class GameView extends SurfaceView {
         canvas.drawPaint(paint);
 
         paint.setColor(Color.BLACK);
-        paint.setTextSize(20);
+        paint.setTextSize(40);
         height = metrics.heightPixels;
         width = metrics.widthPixels;
-        canvas.drawText("Circles clicked: " + Integer.toString(count), width / (float)2.5, height / 10, paint);
+        canvas.drawText(/*"Circles clicked: " +*/ Integer.toString(count), width / 2, height / 10, paint);
         //canAdd = false;
         //for (RectFP r : circles) {
             if (!firstRun) {
@@ -176,15 +176,22 @@ public class GameView extends SurfaceView {
 
     private void makePaints() {
         paints = new ArrayList<Paint>();
-
+        float blurRadius = 25;
+        float dx = 10;
+        float dy = 10;
+        int color = Color.BLACK;
         Paint red = new Paint();
         red.setColor(Color.RED);
+        red.setShadowLayer(blurRadius, dx, dy, color);
         Paint blue = new Paint();
         blue.setColor(Color.BLUE);
+        blue.setShadowLayer(blurRadius, dx, dy, color);
         Paint green = new Paint();
         green.setColor(Color.GREEN);
+        green.setShadowLayer(blurRadius, dx, dy, color);
         Paint yellow = new Paint();
         yellow.setColor(Color.YELLOW);
+        yellow.setShadowLayer(blurRadius, dx, dy, color);
 
         paints.add(red);
         paints.add(blue);

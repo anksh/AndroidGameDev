@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -52,7 +53,8 @@ public class GameView extends SurfaceView {
     private float height = metrics.heightPixels;
     private float width = metrics.widthPixels;
     private RectFP rectFP = new RectFP(500,700,200,300);
-
+    private Paint text = new Paint(1);
+    private Paint background = new Paint();
     /*
     display.getMetrics(metrics);
     height = metrics.heightPixels;
@@ -106,34 +108,33 @@ public class GameView extends SurfaceView {
     @Override
     public void onDraw(Canvas canvas) {
         //canvas.drawColor(Color.BLACK); // Black background
-        Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawPaint(paint);
+        background.setColor(Color.CYAN);
+        background.setStyle(Paint.Style.FILL);
+        canvas.drawPaint(background);
 
-        paint.setColor(Color.BLACK);
-        paint.setTextSize(40);
+        text.setColor(Color.BLACK);
+        text.setTextSize(55);
         height = metrics.heightPixels;
         width = metrics.widthPixels;
-        canvas.drawText(/*"Circles clicked: " +*/ Integer.toString(count), width / 2, height / 10, paint);
+
         //canAdd = false;
         //for (RectFP r : circles) {
-            if (!firstRun) {
-                rectFP.set_right((float) (rectFP.get_right() - (9 + (float)count / 20)));
-                rectFP.set_left((float) (rectFP.get_left() + (9 + (float)count / 20)));
-                rectFP.set_bottom((float) (rectFP.get_bottom() - (9 + (float)count / 20)));
-                rectFP.set_top((float) (rectFP.get_top() + (9 + (float)count / 20)));
+        if (!firstRun) {
+            rectFP.set_right((float) (rectFP.get_right() - (9 + (float)count / 20)));
+            rectFP.set_left((float) (rectFP.get_left() + (9 + (float)count / 20)));
+            rectFP.set_bottom((float) (rectFP.get_bottom() - (9 + (float)count / 20)));
+            rectFP.set_top((float) (rectFP.get_top() + (9 + (float)count / 20)));
 
-             } else {
-                display.getMetrics(metrics);
-                height = metrics.heightPixels;
-                width = metrics.widthPixels;
-                rectFP.set_right(width / 2 + 275);
-                rectFP.set_left(width / 2 - 275);
-                rectFP.set_top(height / 2 - 275);
-                rectFP.set_bottom(height / 2 + 275);
-            }
-            canvas.drawOval(rectFP, rectFP.getPaint());
+        } else {
+            display.getMetrics(metrics);
+            height = metrics.heightPixels;
+            width = metrics.widthPixels;
+            rectFP.set_right(width / 2 + 275);
+            rectFP.set_left(width / 2 - 275);
+            rectFP.set_top(height / 2 - 275);
+            rectFP.set_bottom(height / 2 + 275);
+        }
+        canvas.drawOval(rectFP, rectFP.getPaint());
             //}
         if(rectFP.get_right()-rectFP.get_left()<10){
             rectFP.set_left(0);
@@ -147,6 +148,8 @@ public class GameView extends SurfaceView {
             ((Activity)this.getContext()).finish();
         }
         //canAdd = true;
+        float txtWidth = text.measureText(Integer.toString(count));
+        canvas.drawText(/*"Circles clicked: " +*/ Integer.toString(count), width / 2 /*- txtWidth*/, height / 10, text);
     }
 
     @Override
@@ -179,17 +182,17 @@ public class GameView extends SurfaceView {
         float blurRadius = 25;
         float dx = 10;
         float dy = 10;
-        int color = Color.BLACK;
-        Paint red = new Paint();
+        int color = Color.GRAY;
+        Paint red = new Paint(1);
         red.setColor(Color.RED);
         red.setShadowLayer(blurRadius, dx, dy, color);
-        Paint blue = new Paint();
+        Paint blue = new Paint(1);
         blue.setColor(Color.BLUE);
         blue.setShadowLayer(blurRadius, dx, dy, color);
-        Paint green = new Paint();
+        Paint green = new Paint(1);
         green.setColor(Color.GREEN);
         green.setShadowLayer(blurRadius, dx, dy, color);
-        Paint yellow = new Paint();
+        Paint yellow = new Paint(1);
         yellow.setColor(Color.YELLOW);
         yellow.setShadowLayer(blurRadius, dx, dy, color);
 

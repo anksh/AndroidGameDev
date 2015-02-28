@@ -18,6 +18,10 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -58,6 +62,7 @@ public class GameView extends SurfaceView {
     private Paint background = new Paint();
     private Bundle b = new Bundle();
     private Intent i = new Intent();
+    private final String FILENAME = "highScores";
     /*
     display.getMetrics(metrics);
     height = metrics.heightPixels;
@@ -109,7 +114,7 @@ public class GameView extends SurfaceView {
 
 
     @Override
-    public void onDraw(Canvas canvas) {
+    public void onDraw(Canvas canvas){
         //canvas.drawColor(Color.BLACK); // Black background
         background.setColor(getResources().getColor(R.color.moreBlue));
         background.setStyle(Paint.Style.FILL);
@@ -147,6 +152,11 @@ public class GameView extends SurfaceView {
             gameLoopThread.setRunning(false);
             b.putString("count",Integer.toString(count));
             i.putExtras(b);
+            try {
+                highScores();
+                System.out.println("shoulda worked");
+            }
+            catch (IOException e){}
             ((Activity)this.getContext()).setResult(Activity.RESULT_OK, i);
             ((Activity)this.getContext()).finish();
         }
@@ -181,6 +191,15 @@ public class GameView extends SurfaceView {
         }
 
         return super.onTouchEvent(event);
+    }
+
+    private void highScores() throws IOException {
+        System.out.println("In here");
+        if (getContext().fileList().length==0){
+            FileOutputStream fos = getContext().openFileOutput(FILENAME, Context.MODE_PRIVATE);
+            fos.write(Integer.toString(count).getBytes());
+            fos.close();
+        }
     }
 
     private void makePaints() {

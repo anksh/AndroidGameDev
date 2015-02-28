@@ -148,6 +148,7 @@ public class GameView extends SurfaceView {
             ((Activity)this.getContext()).finish();
         }
         //canAdd = true;
+        text.setShadowLayer(7, 5, 5, Color.GRAY);
         float txtWidth = text.measureText(Integer.toString(count));
         canvas.drawText(/*"Circles clicked: " +*/ Integer.toString(count), width / 2 /*- txtWidth*/, height / 10, text);
     }
@@ -180,8 +181,8 @@ public class GameView extends SurfaceView {
     private void makePaints() {
         paints = new ArrayList<Paint>();
         float blurRadius = 25;
-        float dx = 10;
-        float dy = 10;
+        float dx = 7;
+        float dy = 7;
         int color = Color.GRAY;
         Paint red = new Paint(1);
         red.setColor(Color.RED);

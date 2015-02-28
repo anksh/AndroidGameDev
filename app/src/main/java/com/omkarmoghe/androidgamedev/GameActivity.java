@@ -13,6 +13,7 @@ import android.widget.Button;
 public class GameActivity extends ActionBarActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
+        //Find out how to get this to stop the thread too
         if(keyCode == KeyEvent.KEYCODE_BACK) {
             Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(goHome);

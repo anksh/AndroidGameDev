@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="babyBlue" type="color">#ff24fce0</item>
+    <item name="darkerBabyBlue" type="color">#26d1ce</item>
+    <item name="moreBlue" type="color">#ff2bd2dd</item>
+    <item name="gween" type="color">#ff1dc71e</item>
+
+    <integer-array name="androidcolors">
+        <item>@color/babyBlue</item>
+        <item>@color/darkerBabyBlue</item>
+        <item>@color/moreBlue</item>
+        <item>@color/gween</item>
+    </integer-array>
+</resources>

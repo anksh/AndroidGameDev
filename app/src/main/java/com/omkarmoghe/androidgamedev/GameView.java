@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -55,6 +56,8 @@ public class GameView extends SurfaceView {
     private RectFP rectFP = new RectFP(500,700,200,300);
     private Paint text = new Paint(1);
     private Paint background = new Paint();
+    private Bundle b = new Bundle();
+    private Intent i = new Intent();
     /*
     display.getMetrics(metrics);
     height = metrics.heightPixels;
@@ -108,31 +111,33 @@ public class GameView extends SurfaceView {
     @Override
     public void onDraw(Canvas canvas) {
         //canvas.drawColor(Color.BLACK); // Black background
-        background.setColor(Color.CYAN);
+        background.setColor(getResources().getColor(R.color.moreBlue));
         background.setStyle(Paint.Style.FILL);
         canvas.drawPaint(background);
 
-        text.setColor(Color.BLACK);
-        text.setTextSize(55);
+        text.setColor(Color.DKGRAY);
+        text.setTextSize(75);
         height = metrics.heightPixels;
         width = metrics.widthPixels;
 
         //canAdd = false;
         //for (RectFP r : circles) {
         if (!firstRun) {
-            rectFP.set_right((float) (rectFP.get_right() - (9 + (float)count / 20)));
-            rectFP.set_left((float) (rectFP.get_left() + (9 + (float)count / 20)));
-            rectFP.set_bottom((float) (rectFP.get_bottom() - (9 + (float)count / 20)));
-            rectFP.set_top((float) (rectFP.get_top() + (9 + (float)count / 20)));
+            rectFP.set_right((float) (rectFP.get_right() - (9 + (float)count / 25)));
+            rectFP.set_left((float) (rectFP.get_left() + (9 + (float)count / 25)));
+            rectFP.set_bottom((float) (rectFP.get_bottom() - (9 + (float)count / 25)));
+            rectFP.set_top((float) (rectFP.get_top() + (9 + (float)count / 25)));
 
         } else {
             display.getMetrics(metrics);
             height = metrics.heightPixels;
             width = metrics.widthPixels;
-            rectFP.set_right(width / 2 + 275);
-            rectFP.set_left(width / 2 - 275);
-            rectFP.set_top(height / 2 - 275);
-            rectFP.set_bottom(height / 2 + 275);
+            System.out.println("height" + height);
+            System.out.println("width" + width);
+            rectFP.set_right((float)(width / 2 + (width/2.5)));
+            rectFP.set_left((float)(width / 2 - (width/2.5)));
+            rectFP.set_top((float)(height / 2 - (width/2.5)));
+            rectFP.set_bottom((float)(height / 2 + (width/2.5)));
         }
         canvas.drawOval(rectFP, rectFP.getPaint());
             //}
@@ -140,17 +145,16 @@ public class GameView extends SurfaceView {
             rectFP.set_left(0);
             rectFP.set_right(0);
             gameLoopThread.setRunning(false);
-            Bundle b = new Bundle();
             b.putString("count",Integer.toString(count));
-            Intent i = new Intent();
             i.putExtras(b);
             ((Activity)this.getContext()).setResult(Activity.RESULT_OK, i);
             ((Activity)this.getContext()).finish();
         }
         //canAdd = true;
         text.setShadowLayer(7, 5, 5, Color.GRAY);
+        text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         float txtWidth = text.measureText(Integer.toString(count));
-        canvas.drawText(/*"Circles clicked: " +*/ Integer.toString(count), width / 2 /*- txtWidth*/, height / 10, text);
+        canvas.drawText(/*"Circles clicked: " +*/ Integer.toString(count), width / 2 - txtWidth/2, height / 10, text);
     }
 
     @Override
@@ -161,13 +165,14 @@ public class GameView extends SurfaceView {
                 && y > rectFP.get_top() && y < rectFP.get_bottom()/*canAdd*/) {
 
             firstRun = false;
-            randomX = random.nextInt((int)(width - 100)) + 50;
-            randomY = random.nextInt((int)(height - 100)) + 50;
-            System.out.println(randomX);
-            System.out.println(randomY);
+            randomX = random.nextInt((int)(width - width/7)) + width/7;
+            randomY = random.nextInt((int)(height - height/7)) + height/14;
+//            System.out.println(randomX);
+//            System.out.println(randomY);
 
             do{
-                rectFP = new RectFP(randomX - 275, randomY - 275, randomX + 275, randomY + 275);
+                rectFP = new RectFP(randomX - (float)(width/2.5), randomY - (float)(width/2.5),
+                        randomX + (float)(width/2.5), randomY + (float)(width/2.5));
             }while(rectFP.get_left()>width || rectFP.get_top()>height);
             rectFP.setPaint(paints.get(random.nextInt(4)));
             //circles.clear();

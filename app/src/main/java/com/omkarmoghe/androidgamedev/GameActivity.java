@@ -11,10 +11,12 @@ import android.widget.Button;
 
 
 public class GameActivity extends ActionBarActivity {
+    private GameView gameView;
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event){
         //Find out how to get this to stop the thread too
         if(keyCode == KeyEvent.KEYCODE_BACK) {
+            gameView.kill();
             Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(goHome);
             return true;
@@ -24,9 +26,10 @@ public class GameActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        gameView = new GameView(GameActivity.this);
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();// Hides the action bar
-        setContentView(new GameView(GameActivity.this));
+        setContentView(gameView);
     }
 
     @Override

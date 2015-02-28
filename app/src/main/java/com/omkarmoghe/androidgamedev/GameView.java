@@ -58,6 +58,7 @@ public class GameView extends SurfaceView {
     private Paint background = new Paint();
     private Bundle b = new Bundle();
     private Intent i = new Intent();
+
     /*
     display.getMetrics(metrics);
     height = metrics.heightPixels;
@@ -77,29 +78,34 @@ public class GameView extends SurfaceView {
 
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
-                boolean retry = true;
+//                boolean retry = true;
                 gameLoopThread.setRunning(false);
-                while (retry) {
+//                while (retry) {
                     try {
                         gameLoopThread.join();
-                        retry = false;
+//                        retry = false;
                     }
                     catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }
+//                }
             }
 
             @SuppressLint("WrongCall")
             @Override
             public void surfaceCreated (SurfaceHolder holder) {
-                gameLoopThread.setRunning(true);
-                gameLoopThread.start();
+                if(gameLoopThread.getState() == Thread.State.NEW) {
+                    gameLoopThread.setRunning(true);
+                    gameLoopThread.start();
+                }
+                else{
+                    goHome();
+                }
             }
 
             @Override
             public void surfaceChanged (SurfaceHolder holder, int format, int width, int height) {
-
+//                gameLoopThread.setRunning(false);
                 }
         });
 
@@ -107,6 +113,11 @@ public class GameView extends SurfaceView {
         rectFP.setPaint(paints.get(random.nextInt(4)));
     }
 
+
+    public void goHome(){
+        Intent goHome = new Intent(this.getContext(), MainActivity.class);
+        (getContext()).startActivity(goHome);
+    }
 
     @Override
     public void onDraw(Canvas canvas) {
@@ -183,6 +194,9 @@ public class GameView extends SurfaceView {
         return super.onTouchEvent(event);
     }
 
+    public void kill(){
+        gameLoopThread.setRunning(false);
+    }
     private void makePaints() {
         paints = new ArrayList<Paint>();
         float blurRadius = 25;

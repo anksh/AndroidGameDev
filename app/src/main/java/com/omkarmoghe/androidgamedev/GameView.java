@@ -96,8 +96,13 @@ public class GameView extends SurfaceView {
             @SuppressLint("WrongCall")
             @Override
             public void surfaceCreated (SurfaceHolder holder) {
-                gameLoopThread.setRunning(true);
-                gameLoopThread.start();
+                if(gameLoopThread.getState() == Thread.State.NEW) {
+                    gameLoopThread.setRunning(true);
+                    gameLoopThread.start();
+                }
+                else{
+                    goHome();
+                }
             }
 
             @Override
@@ -110,6 +115,10 @@ public class GameView extends SurfaceView {
         rectFP.setPaint(paints.get(random.nextInt(4)));
     }
 
+    public void goHome(){
+        Intent goHome = new Intent(this.getContext(), MainActivity.class);
+        (getContext()).startActivity(goHome);
+    }
 
     @Override
     public void onDraw(Canvas canvas) {
@@ -166,6 +175,10 @@ public class GameView extends SurfaceView {
         text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         float txtWidth = text.measureText(Integer.toString(count));
         canvas.drawText(/*"Circles clicked: " +*/ Integer.toString(count), width / 2 - txtWidth/2, height / 10, text);
+    }
+
+    public void kill(){
+        gameLoopThread.setRunning(false);
     }
 
     @Override

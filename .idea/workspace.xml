@@ -72,12 +72,23 @@
       <file leaf-file-name="GameView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/GameView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.2110727" vertical-offset="2122" max-vertical-offset="3888">
-              <caret line="101" column="16" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.31487888" vertical-offset="2230" max-vertical-offset="3888">
+              <caret line="156" column="45" selection-start-line="156" selection-start-column="45" selection-end-line="156" selection-end-column="45" />
               <folding>
-                <element signature="e#6463#6464#0" expanded="true" />
-                <element signature="e#6511#6512#0" expanded="true" />
+                <element signature="e#5479#5499#0" expanded="true" />
+                <element signature="e#6452#6453#0" expanded="true" />
+                <element signature="e#6500#6501#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.04" vertical-offset="0" max-vertical-offset="288">
+              <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,8 +96,8 @@
       <file leaf-file-name="HighScore.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/HighScore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="720">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
+              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -1108,15 +1119,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/GameOver/java.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/GameOver/GameOver.java" />
         <option value="$PROJECT_DIR$/app/src/main/GameActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/GameActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/HighScore.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/activity_game.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/HighScore.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/GameView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       </list>
     </option>
   </component>
@@ -1261,7 +1272,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="values" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1638,8 +1649,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1853">
           <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding>
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6511#6512#0" expanded="true" />
+            <element signature="e#5479#5499#0" expanded="true" />
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1684,8 +1696,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1853">
           <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding>
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6511#6512#0" expanded="true" />
+            <element signature="e#5479#5499#0" expanded="true" />
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1730,8 +1743,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1343" max-vertical-offset="1853">
           <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
           <folding>
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6511#6512#0" expanded="true" />
+            <element signature="e#5479#5499#0" expanded="true" />
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1776,8 +1790,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="963" max-vertical-offset="1853">
           <caret line="84" column="48" selection-start-line="84" selection-start-column="48" selection-end-line="84" selection-end-column="48" />
           <folding>
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6511#6512#0" expanded="true" />
+            <element signature="e#5479#5499#0" expanded="true" />
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1822,8 +1837,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="1955">
           <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
           <folding>
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6511#6512#0" expanded="true" />
+            <element signature="e#5479#5499#0" expanded="true" />
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1868,8 +1884,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="2070">
           <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
           <folding>
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6511#6512#0" expanded="true" />
+            <element signature="e#5479#5499#0" expanded="true" />
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1903,8 +1920,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2185">
           <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
           <folding>
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6511#6512#0" expanded="true" />
+            <element signature="e#5479#5499#0" expanded="true" />
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1938,8 +1956,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="2185">
           <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
           <folding>
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6511#6512#0" expanded="true" />
+            <element signature="e#5479#5499#0" expanded="true" />
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1963,14 +1982,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-mdpi/circles.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.32" vertical-offset="0" max-vertical-offset="270">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="30" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/MainActivity.java">
@@ -2024,14 +2035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/HighScore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/GameActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1008">
@@ -2040,13 +2043,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/HighScore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.04" vertical-offset="0" max-vertical-offset="288">
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/omkarmoghe/androidgamedev/GameView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2110727" vertical-offset="2122" max-vertical-offset="3888">
-          <caret line="101" column="16" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.31487888" vertical-offset="2230" max-vertical-offset="3888">
+          <caret line="156" column="45" selection-start-line="156" selection-start-column="45" selection-end-line="156" selection-end-column="45" />
           <folding>
-            <element signature="e#6463#6464#0" expanded="true" />
-            <element signature="e#6511#6512#0" expanded="true" />
+            <element signature="e#5479#5499#0" expanded="true" />
+            <element signature="e#6452#6453#0" expanded="true" />
+            <element signature="e#6500#6501#0" expanded="true" />
           </folding>
         </state>
       </provider>

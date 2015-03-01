@@ -157,7 +157,7 @@ public class GameView extends SurfaceView {
             gameLoopThread.setRunning(false);
             AlertDialog alert = new AlertDialog.Builder(getContext())
                     .setMessage("Enter your name for the high scores!")
-                    .setNeutralButton(R.string.alert_dialog_something, new DialogInterface.OnClickListener() {
+                    .setNeutralButton(R.string.alertDialog, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             HighScore player =  new HighScore();
                             b.putString("count",Integer.toString(count));

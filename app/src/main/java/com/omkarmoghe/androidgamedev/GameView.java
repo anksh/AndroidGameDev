@@ -2,7 +2,9 @@ package com.omkarmoghe.androidgamedev;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
@@ -16,6 +18,7 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.WindowManager;
 
 import java.util.ArrayList;
@@ -132,8 +135,6 @@ public class GameView extends SurfaceView {
             display.getMetrics(metrics);
             height = metrics.heightPixels;
             width = metrics.widthPixels;
-            System.out.println("height" + height);
-            System.out.println("width" + width);
             rectFP.set_right((float)(width / 2 + (width/2.5)));
             rectFP.set_left((float)(width / 2 - (width/2.5)));
             rectFP.set_top((float)(height / 2 - (width/2.5)));
@@ -145,10 +146,20 @@ public class GameView extends SurfaceView {
             rectFP.set_left(0);
             rectFP.set_right(0);
             gameLoopThread.setRunning(false);
-            b.putString("count",Integer.toString(count));
-            i.putExtras(b);
-            ((Activity)this.getContext()).setResult(Activity.RESULT_OK, i);
-            ((Activity)this.getContext()).finish();
+            AlertDialog alert = new AlertDialog.Builder(getContext())
+                    .setMessage("Enter your name for the high scores!")
+                    .setNeutralButton(R.string.alert_dialog_something, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            HighScore player =  new HighScore();
+                            b.putString("count",Integer.toString(count));
+
+                            i.putExtras(b);
+                            ((Activity)getContext()).setResult(Activity.RESULT_OK, i);
+                            ((Activity)getContext()).finish();
+                        /* User clicked Something so do some stuff */
+                        }
+                    });
+
         }
         //canAdd = true;
         text.setShadowLayer(7, 5, 5, Color.GRAY);

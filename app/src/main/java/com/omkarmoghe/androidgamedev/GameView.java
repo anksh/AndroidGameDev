@@ -123,11 +123,11 @@ public class GameView extends SurfaceView {
     @Override
     public void onDraw(Canvas canvas) {
         //canvas.drawColor(Color.BLACK); // Black background
-        background.setColor(getResources().getColor(R.color.moreBlue));
+        background.setColor(getResources().getColor(R.color.gray));
         background.setStyle(Paint.Style.FILL);
         canvas.drawPaint(background);
 
-        text.setColor(Color.DKGRAY);
+        text.setColor(Color.WHITE);
         text.setTextSize(75);
         height = metrics.heightPixels;
         width = metrics.widthPixels;
@@ -155,23 +155,26 @@ public class GameView extends SurfaceView {
             rectFP.set_left(0);
             rectFP.set_right(0);
             gameLoopThread.setRunning(false);
-            AlertDialog alert = new AlertDialog.Builder(getContext())
-                    .setMessage("Enter your name for the high scores!")
-                    .setNeutralButton(R.string.alertDialog, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            HighScore player =  new HighScore();
-                            b.putString("count",Integer.toString(count));
-
-                            i.putExtras(b);
-                            ((Activity)getContext()).setResult(Activity.RESULT_OK, i);
-                            ((Activity)getContext()).finish();
-                        /* User clicked Something so do some stuff */
-                        }
-                    });
+            b.putString("count",Integer.toString(count));
+            i.putExtras(b);
+            ((Activity)this.getContext()).setResult(Activity.RESULT_OK, i);
+            ((Activity)this.getContext()).finish();
+//            AlertDialog alert = new AlertDialog.Builder(getContext())
+//                    .setMessage("Enter your name for the high scores!")
+//                    .setNeutralButton(R.string.alertDialog, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int whichButton) {
+//                            HighScore player =  new HighScore();
+//                            b.putString("count",Integer.toString(count));
+//
+//                            i.putExtras(b);
+//                            ((Activity)getContext()).setResult(Activity.RESULT_OK, i);
+//                            ((Activity)getContext()).finish();
+//                        }
+//                    });
 
         }
         //canAdd = true;
-        text.setShadowLayer(7, 5, 5, Color.GRAY);
+        text.setShadowLayer(10, 5, 5, R.color.darkGray);
         text.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         float txtWidth = text.measureText(Integer.toString(count));
         canvas.drawText(/*"Circles clicked: " +*/ Integer.toString(count), width / 2 - txtWidth/2, height / 10, text);
@@ -209,10 +212,10 @@ public class GameView extends SurfaceView {
 
     private void makePaints() {
         paints = new ArrayList<Paint>();
-        float blurRadius = 25;
+        float blurRadius = 17;
         float dx = 7;
         float dy = 7;
-        int color = Color.GRAY;
+        int color = R.color.darkGray;
         Paint red = new Paint(1);
         red.setColor(Color.RED);
         red.setShadowLayer(blurRadius, dx, dy, color);

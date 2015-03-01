@@ -4,11 +4,15 @@
     <item name="darkerBabyBlue" type="color">#26d1ce</item>
     <item name="moreBlue" type="color">#ff2bd2dd</item>
     <item name="gween" type="color">#ff1dc71e</item>
+    <item name="gray" type="color">#ff717069</item>
+    <item name="darkGray" type="color">#ff5a5953</item>
 
     <integer-array name="androidcolors">
         <item>@color/babyBlue</item>
         <item>@color/darkerBabyBlue</item>
         <item>@color/moreBlue</item>
         <item>@color/gween</item>
+        <item>@color/gray</item>
+        <item>@color/darkGray</item>
     </integer-array>
 </resources>

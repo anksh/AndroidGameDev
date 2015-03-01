@@ -27,6 +27,7 @@ public class GameActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         gameView = new GameView(GameActivity.this);
+//        gameView.setElevation(4);
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();// Hides the action bar
         setContentView(gameView);
